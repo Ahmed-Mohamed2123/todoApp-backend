@@ -21,11 +21,11 @@ exports.checkAuth = (req, res, next) => {
 
 exports.checkRoleAdmin = (req, res, next) => {
     let admin = 'admin';
-    if (req.user.role === admin) {
+    if (req.user['role'].some(role => role === admin)) {
         next();
     } else {
         res.status(403).json({
-            message: 'This Resource Is Forbidden'
+            message: 'This Resource Is Forbidden',
         }) 
     }
 };

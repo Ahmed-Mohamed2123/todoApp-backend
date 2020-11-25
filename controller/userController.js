@@ -77,8 +77,8 @@ let transporter = nodemailer.createTransport({
     port: 465,
     secure: true, // true for 465, false for other ports
     auth: {
-      user: 'ahmedshabana646@gmail.com', // generated ethereal user
-      pass: 'Aa6801796@', // generated ethereal password
+      user: process.env.myEmail, // generated ethereal user
+      pass: process.env.myPass, // generated ethereal password
     },
     tls: {
         rejectUnauthorized: false,
@@ -102,7 +102,7 @@ exports.forgotPassword = async (req, res) => {
             text: 'Hello world?',
             html: `
                 <h2>Please click on given link to reset you password</h2>
-                <p>http://localhost:4200/auth/reset-password/${token}</p>
+                <p>https://client-api2.herokuapp.com/auth/reset-password/${token}</p>
             `
         };
 
