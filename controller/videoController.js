@@ -7,11 +7,11 @@ async function addVideo(req, res, next) {
             let uploadRes;
             if (req.files.image) {
                 const file = req.files.image;
-                uploadRes = await(await fileUploadService.uploadFileToAws(file, 'vide')).fileUrl;
+                uploadRes = await(await fileUploadService.uploadFileToAws(file, 'videos')).fileUrl;
             }
             
             const file1 = req.files.video;
-            const uploadRes1 = await fileUploadService.uploadFileToAws(file1, 'vide');
+            const uploadRes1 = await fileUploadService.uploadFileToAws(file1, 'videos');
 
             const video = await new Video({
                 title: req.body.title,

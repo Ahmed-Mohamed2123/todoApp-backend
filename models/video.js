@@ -10,7 +10,7 @@ const videoSchema = new mongoose.Schema({
     },
     image: {
         type: String,
-        default: 'https://api22.s3.us-east-2.amazonaws.com/defaultImg/28613310164'
+        default: 'https://api22.s3.us-east-2.amazonaws.com/defaultImg/355514137'
     },
     video: {
         type: String
