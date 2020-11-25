@@ -163,5 +163,5 @@ module.exports = {
     deleteAudio,
     updateAudio,
     getAllAudios,
-    getById,
+    getById
 }

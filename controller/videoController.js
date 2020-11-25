@@ -3,16 +3,20 @@ const fileUploadService =  require('../aws/upload.service');
 
 async function addVideo(req, res, next) {
     try{
-        if(req.files && req.files.image) {
-            const file = req.files.image;
+        if(req.files) {
+            let uploadRes;
+            if (req.files.image) {
+                const file = req.files.image;
+                uploadRes = await(await fileUploadService.uploadFileToAws(file, 'vide')).fileUrl;
+            }
+            
             const file1 = req.files.video;
-            const uploadRes = await fileUploadService.uploadFileToAws(file, 'videos');
-            const uploadRes1 = await fileUploadService.uploadFileToAws(file1, 'videos');
+            const uploadRes1 = await fileUploadService.uploadFileToAws(file1, 'vide');
 
             const video = await new Video({
                 title: req.body.title,
                 description: req.body.description,
-                image: uploadRes.fileUrl,
+                image: uploadRes,
                 video: uploadRes1.fileUrl
             });
 
