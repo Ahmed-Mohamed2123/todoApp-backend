@@ -2,10 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
+const path = require('path');
 
 const userRouter = require('./routes/userRoutes');
-const videoRouter = require('./routes/videoRoutes');
-const audioRouter = require('./routes/audioRoutes');
+const taskRouter = require('./routes/taskRoutes');
 
 const app = express();
 app.use(cors());
@@ -16,11 +16,11 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use('/images', express.static(path.join('backend/images')));
 
 // Routes
 app.use('/api/user', userRouter);
-app.use('/api/video', videoRouter);
-app.use('/api/audio', audioRouter);
+app.use('/api/task', taskRouter);
 
 
 module.exports = app;

@@ -96,13 +96,13 @@ exports.forgotPassword = async (req, res) => {
 
         const token = jwt.sign({_id: user._id}, process.env.SECRET_TOKEN, {expiresIn: '20m'});
         const data = {
-            from: '"Fred Foo 👻" <ahmedshabana646@gmail.com>',
+            from: '"Fred Foo 👻" <>',
             to: email,
             subject: 'Account Activation Link',
             text: 'Hello world?',
             html: `
                 <h2>Please click on given link to reset you password</h2>
-                <p>https://client-api2.herokuapp.com/auth/reset-password/${token}</p>
+                <p>http://localhost:4200/auth/reset-password/${token}</p>
             `
         };
 
