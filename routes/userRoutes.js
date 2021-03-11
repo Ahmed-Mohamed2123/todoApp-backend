@@ -10,7 +10,7 @@ router.post('/signup', userController.singup);
 
 router.get('/UserInfo', check.checkAuth, userController.AllUser);
 
-router.put('/forgot-password', userController.forgotPassword);
-router.put('/reset-password', userController.resetPassword);
+router.post('/forgot-password', userController.forgotPassword);
+router.put('/reset-password/:token', userController.resetPassword);
 
 module.exports = router;

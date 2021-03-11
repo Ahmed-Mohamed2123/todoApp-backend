@@ -7,7 +7,7 @@ async function addTask(req, res, next) {
         const task = new Task({
             title: req.body.title,
             description: req.body.description,
-            image: url + '/images' + req.file.filename
+            image: url + '/images/' + req.file.filename
         });
 
         task.save().then(createdAudio => {
@@ -81,7 +81,8 @@ async function updateTask(req, res, next) {
 
         await taskImport.save().then(result => {
             res.status(200).json({
-                result: result
+                message: 'task has bean updated successfully',
+                task: result
             });
         }).catch(err => {
             res.status(200).json({
@@ -132,7 +133,7 @@ async function getById(req, res, next) {
             .then(task => {
                 res.status(200).json({
                     message: 'Task fetched successfully',
-                    taskById: task
+                    task
                 });
             })
             .catch(error => {
